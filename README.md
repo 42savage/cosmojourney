@@ -1,29 +1,13 @@
-# cosmoapp
+# Cosmo Journey
+### Simple app that shows informations about whole universe
 
-## Project setup
-```
-npm install
-```
+This is my first project that uses any kind of api.
+App simply communicates with public nasa api and respond with some data, like images, keywords, descriptions etc.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### Technologies
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* Vue
+* Vue router
+* Vuex
+* axios
+* animate.css
