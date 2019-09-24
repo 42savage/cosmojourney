@@ -1,31 +1,31 @@
 <template>
-<div class="resultPage">
+<div v-bind:class="{full: cosmoData.length < 3}" class="resultPage">
   <modal/>
-  <div class="logoContainer animated fadeInDown">
+  <div v-bind:class="{logoFull: cosmoData.length < 3}" class="logoContainer">
     <router-link tag="div" class="logo" to="/">
       <h1>Cosmo</h1>
       <h2>Journey</h2>
     </router-link>
   </div>
-  <p class="text animated fadeInDown">Write something related to universe like for example sun, moon or canis majoris</p>
-<div class="cont animated fadeInUp">
+  <p class="text">Write something related to universe like for example sun, moon or canis majoris</p>
+<div class="cont">
   <input class="input" type="text" placeholder="What are you looking for?" v-model="search" v-on:keyup.enter="getData">
   <input class="submit" type="submit" value="enter" @click="getData">
 </div>
-<div class="tags animated fadeInUp"><span>Common tags: </span>
+<div class="tags"><span>Common tags: </span>
   <a class="tag" @click="setTag('moon'); getData()">Moon</a>
   <a class="tag" @click="setTag('earth'); getData()">Earth</a>
   <a class="tag" @click="setTag('saturn'); getData()">Saturn</a>
   <a class="tag" @click="setTag('mars'); getData()">Mars</a>
 </div>
-<a class="errorMessage animated pulse" v-if="searchError">I had some problems with your search, try to write something else </a>
-<!-- <h1>{{loading}}</h1> -->
+<a class="errorMessage" v-if="searchError">I had some problems with your search, try to write something else </a>
+<loader v-if="loading" />
   <ul class="grid">
-    <li class="grid-item animated slideInUp" v-for="item in cosmoData" :key="item.id" >
+    <li class="grid-item" v-for="item in cosmoData" :key="item.id" >
       <img @click="openModal(item)" class="image" v-bind:src="item.links[0].href" v-bind:title="item.data[0]">
     </li>
   </ul>
-  <div v-if="!searchError" class="footer animated fadeInDown">
+  <div v-bind:class="{footerFull: cosmoData.length < 1}" class="footer">
     <h1>Cosmo <span class="blue">Journey</span></h1>
     <a>Created by shizz0@outlook.com</a>
   </div>
@@ -34,11 +34,13 @@
 
 <script>
 import modal from '../components/modal';
-import { mapGetters, mapActions, mapMutations } from 'vuex';
+import loader from '../components/loader';
+import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'searchResult',
   components: {
-    modal
+    modal,
+    loader
   },
   computed:{
     ...mapGetters(['cosmoData', 'loading', 'searchError']),
@@ -65,6 +67,19 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+.full{
+  height: 100vh !important;
+}
+.logoFull{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.footerFull{
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 .grid{
   width: 99vw;

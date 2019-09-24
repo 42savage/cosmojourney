@@ -34,10 +34,12 @@ export default new Vuex.Store({
   },
   actions: {
     async getData({ commit, state }){
+      state.loading = true;
       state.result = [];
       axios.get(`${API}${state.search}&media_type=image`)
       .then(function(response){
         const output = response.data.collection.items;
+        router.replace('searchResult');
         if(output.length > 0){
           state.searchError = false;
           output.forEach(item=>{
@@ -50,12 +52,14 @@ export default new Vuex.Store({
         }
       })
       .catch(function(error){
+        // eslint-disable-next-line
         console.log(error)
       })
       .finally(function(){
-        if(router.history.current.path === '/' && state.result.length > 0){
-          router.replace('searchResult');
-        }
+        state.loading = false;
+        // if(router.history.current.path === '/' && state.result.length > 0){
+        //   router.replace('searchResult');
+        // }
       })
     },
     setTag({commit}, value){
