@@ -44,7 +44,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .home{
-  background: url('../assets/background.jpg');
+  background: #030416 url('../assets/background.jpg');
   width: 100vw;
   height: 100vh;
   background-repeat: no-repeat;
