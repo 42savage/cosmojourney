@@ -132,7 +132,7 @@ export default {
   }
 }
 .inputContainer{
-  margin-top: 224px;
+  margin-top: 164px;
   margin-bottom: -200px;
 }
 .author{
