@@ -7,7 +7,7 @@
     <div class="content">
       <h1 class="colored">Cosmo <span class="test">Journey</span></h1>
       <div class="inputContainer">
-        <h2 class="info">Get informations about universe!</h2>
+        <h2 class="info">Explore the whole universe!</h2>
         <h4 class="errorMessage" v-if="searchError">Something went wrong, check your input!</h4>
         <div class="cont">
           <input class="input" type="text" placeholder="What are you looking for?" v-model="search" v-on:keyup.enter="getData">

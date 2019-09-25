@@ -1,12 +1,7 @@
 <template>
 <div v-bind:class="{full: cosmoData.length < 3}" class="resultPage">
   <modal/>
-  <div v-bind:class="{logoFull: cosmoData.length < 3}" class="logoContainer">
-    <router-link tag="div" class="logo" to="/">
-      <h1>Cosmo</h1>
-      <h2>Journey</h2>
-    </router-link>
-  </div>
+  <navigation/>
   <p class="text">Write something related to universe like for example sun, moon or canis majoris</p>
 <div class="cont">
   <input class="input" type="text" placeholder="What are you looking for?" v-model="search" v-on:keyup.enter="getData">
@@ -25,7 +20,7 @@
       <img @click="openModal(item)" class="image" v-bind:src="item.links[0].href" v-bind:title="item.data[0]">
     </li>
   </ul>
-  <div v-bind:class="{footerFull: cosmoData.length < 1}" class="footer">
+  <div v-bind:class="{footerFull: cosmoData.length <= 4}" class="footer">
     <h1>Cosmo <span class="blue">Journey</span></h1>
     <a>Created by shizz0@outlook.com</a>
   </div>
@@ -35,12 +30,14 @@
 <script>
 import modal from '../components/modal';
 import loader from '../components/loader';
+import navigation from '../components/navigation'
 import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'searchResult',
   components: {
     modal,
-    loader
+    loader,
+    navigation
   },
   computed:{
     ...mapGetters(['cosmoData', 'loading', 'searchError']),
@@ -55,7 +52,7 @@ export default {
   },
   methods:{
     ...mapActions(['getData', 'setTag', 'openModal']),
-  }
+  },
 }
 </script>
 
@@ -95,30 +92,6 @@ export default {
   object-fit: cover;
   cursor: pointer;
   outline: none;
-}
-.logoContainer{
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  padding: 42px;
-}
-.logo{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  cursor: pointer;
-    h1{
-    letter-spacing: 6px;
-    font-size: 24px;
-    text-transform: uppercase;
-    color: rgb(45, 47, 95);
-  }
-  h2{
-    font-size: 18px;
-    margin: -5px 0;
-    color: #3C74A8;
-  }
 }
 .input{
   // background: #222442;
@@ -186,5 +159,10 @@ export default {
     .blue{
       color: #3C74A8;
     }
+  }
+  .exploreBtn{
+    text-decoration: none;
+    color: rgb(45, 47, 95);
+    font-weight: bold;
   }
 </style>

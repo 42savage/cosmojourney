@@ -26,7 +26,6 @@ export default {
     },
     filters:{
         long: function(value){
-            console.log(value)
             if(value.length > 460){
                 let result = value.slice(0, 460)+'...';
                 return result;

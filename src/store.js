@@ -39,7 +39,11 @@ export default new Vuex.Store({
       axios.get(`${API}${state.search}&media_type=image`)
       .then(function(response){
         const output = response.data.collection.items;
-        router.replace('searchResult');
+
+        if(router.history.current.path === '/'){
+          router.replace('searchResult');
+        }
+
         if(output.length > 0){
           state.searchError = false;
           output.forEach(item=>{
@@ -57,9 +61,6 @@ export default new Vuex.Store({
       })
       .finally(function(){
         state.loading = false;
-        // if(router.history.current.path === '/' && state.result.length > 0){
-        //   router.replace('searchResult');
-        // }
       })
     },
     setTag({commit}, value){
