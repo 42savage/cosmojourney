@@ -11,3 +11,4 @@ App simply communicates with public nasa api and respond with some data, like im
 * Vuex
 * axios
 * gsap
+* particles.js
