@@ -14,7 +14,8 @@
   <a class="tag" @click="setTag('mars'); getData()">Mars</a>
 </div>
 <a class="errorMessage" v-if="searchError">I had some problems with your search, try to write something else </a>
-<loader v-if="loading" />
+<loader v-if="loading" /> 
+
   <ul class="grid">
     <li class="grid-item" v-for="item in cosmoData" :key="item.id" >
       <img @click="openModal(item)" class="image" v-bind:src="item.links[0].href" v-bind:title="item.data[0]">
