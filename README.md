@@ -10,4 +10,4 @@ App simply communicates with public nasa api and respond with some data, like im
 * Vue router
 * Vuex
 * axios
-* animate.css
+* gsap
