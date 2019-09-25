@@ -1,9 +1,7 @@
 <template>
   <div class="home">
-    <div class="nav">
-      <h1>Cosmo</h1>
-      <h2>journey</h2>
-    </div>
+    <loader v-if="loading" />
+    <navigation/>
     <div class="content">
       <h1 class="colored">Cosmo <span class="test">Journey</span></h1>
       <div class="inputContainer">
@@ -24,10 +22,16 @@
 <script>
 // @ is an alias to /src
 import { mapGetters, mapActions } from 'vuex';
+import loader from '../components/loader';
+import navigation from '../components/navigation';
 export default {
   name: 'home',
+  components:{
+    loader,
+    navigation
+  },
   computed:{
-    ...mapGetters(['searchError'] ),
+    ...mapGetters(['searchError', 'loading'] ),
     search: {
       get(){
         return this.$store.state.search;

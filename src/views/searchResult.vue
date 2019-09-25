@@ -1,26 +1,34 @@
 <template>
 <div v-bind:class="{full: cosmoData.length < 3}" class="resultPage">
   <modal/>
-  <navigation/>
-  <p class="text">Write something related to universe like for example sun, moon or canis majoris</p>
-<div class="cont">
+      <vue-particles
+        class="particles"
+        color="#000000"
+        :particleOpacity="0.9"
+        :particlesNumber="80"
+        shapeType="circle"
+        :particleSize="1.2"
+        :lineLinked="false"
+        :moveSpeed="1.1"
+        :hoverEffect="false"
+        :clickEffect="false"
+      >
+      </vue-particles>
+  <navigation v-bind:class="{logoFull: cosmoData.length < 1}" />
+  <p class="text anim">Write something related to universe like for example sun, moon or mars</p>
+<div class="cont anim">
   <input class="input" type="text" placeholder="What are you looking for?" v-model="search" v-on:keyup.enter="getData">
   <input class="submit" type="submit" value="enter" @click="getData">
 </div>
-<div class="tags"><span>Common tags: </span>
+<a class="errorMessage" v-if="searchError">I had some problems with your search, try to write something else </a>
+<div class="tags anim"><span>Common tags: </span>
   <a class="tag" @click="setTag('moon'); getData()">Moon</a>
   <a class="tag" @click="setTag('earth'); getData()">Earth</a>
   <a class="tag" @click="setTag('saturn'); getData()">Saturn</a>
   <a class="tag" @click="setTag('mars'); getData()">Mars</a>
 </div>
-<a class="errorMessage" v-if="searchError">I had some problems with your search, try to write something else </a>
 <loader v-if="loading" /> 
-
-  <ul class="grid">
-    <li class="grid-item" v-for="item in cosmoData" :key="item.id" >
-      <img @click="openModal(item)" class="image" v-bind:src="item.links[0].href" v-bind:title="item.data[0]">
-    </li>
-  </ul>
+  <grid/>
   <div v-bind:class="{footerFull: cosmoData.length <= 4}" class="footer">
     <h1>Cosmo <span class="blue">Journey</span></h1>
     <a>Created by shizz0@outlook.com</a>
@@ -31,14 +39,16 @@
 <script>
 import modal from '../components/modal';
 import loader from '../components/loader';
-import navigation from '../components/navigation'
+import navigation from '../components/navigation';
 import { mapGetters, mapActions } from 'vuex';
+import grid from '../components/grid';
 export default {
   name: 'searchResult',
   components: {
     modal,
     loader,
-    navigation
+    navigation,
+    grid
   },
   computed:{
     ...mapGetters(['cosmoData', 'loading', 'searchError']),
@@ -52,13 +62,46 @@ export default {
     },
   },
   methods:{
-    ...mapActions(['getData', 'setTag', 'openModal']),
+    ...mapActions(['setTag', 'getData']),
   },
+  mounted(){
+        TweenMax.from(".anim", 1, {
+          delay: 0.5,
+          opacity: 0,
+          y: -600,
+          ease: Power2.easeInOut
+        });
+        TweenMax.to(".anim", 1, {
+          opacity: 1,
+          y: 0,
+          delay: 0.5,
+          ease: Power2.easeInOut
+        });
+
+         TweenMax.from(".nav", 1, {
+          delay: 0.5,
+          opacity: 0,
+          y: -600,
+          ease: Power2.easeInOut
+        });
+        TweenMax.to(".nav", 1, {
+          opacity: 1,
+          y: 0,
+          delay: 0.5,
+          ease: Power2.easeInOut
+        });
+    },
 }
 </script>
 
 <style lang="scss" scoped>
-@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css');
+.particles{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+}
 .resultPage{
   display: flex;
   width: 100%;
@@ -132,6 +175,7 @@ export default {
   .tag{
     padding: 6px 12px;
     border-radius: 25px;
+    background: white;
     border: 2px solid rgb(45,47,95);
     margin: 6px;
     cursor: pointer;
@@ -142,9 +186,11 @@ export default {
   }
   .text{
     margin: 0 0 6px 0;
+    background: white;
   }
   .errorMessage{
     color: crimson;
+    margin: 12px 0;
   }
   .footer{
     width: 100%;

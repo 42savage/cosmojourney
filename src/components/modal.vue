@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
     name: 'modal',
     computed:{
@@ -39,6 +39,7 @@ export default {
 <style scoped lang="scss">
 .openModal{
     position: fixed;
+    border-radius: 5px;
     z-index: 2;
     top: 15%;
     width: 80%;
@@ -67,8 +68,8 @@ export default {
         justify-content: center;
         align-items: center;
         img{
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
         }
     }
 }
@@ -86,5 +87,8 @@ export default {
     &:hover{
         font-weight: bold;
     }
+}
+a{
+    margin-top: 16px;
 }
 </style>

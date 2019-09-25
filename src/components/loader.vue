@@ -2,24 +2,26 @@
 <!-- <div class="loading-bar">
     <div class="loader">Loading...</div>
 </div> -->
-<div class="fullscreen">
+<div v-bind:class="{hBackground: this.$router.history.current.name === 'home', sBackground: this.$router.history.current.name === 'searchResult' }" class="fullscreen">
 <div class='circle'>
   <div class='inner'></div>
 </div>
-<h3>Loading...</h3>
+<h3 v-bind:class="{bText: this.$router.history.current.name === 'searchResult'}">Loading...</h3>
 </div>
 </template>
 
 <script>
 export default {
-
+  name: 'loader'
 }
 </script>
 
 <style lang="scss" scoped>
 $b: #030416;
+.bText{
+  color: $b;
+}
   .fullscreen{
-    background: #030416;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -29,6 +31,12 @@ $b: #030416;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+  .sBackground{
+    background: white;
+  }
+  .hBackground{
+    background: #030416;
   }
   h3{
     color: white;

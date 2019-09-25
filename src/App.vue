@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <transition name='router-anim' >
       <router-view/>
-    </transition>
   </div>
 </template>
 
