@@ -12,3 +12,6 @@ App simply communicates with public nasa api and respond with some data, like im
 * axios
 * gsap
 * particles.js
+
+#### To do
+* Mobile version
