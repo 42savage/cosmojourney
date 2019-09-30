@@ -18,14 +18,32 @@
   <p class="text anim">Write something related to universe like for example sun, moon or mars</p>
 <div class="cont anim">
   <input class="input" type="text" placeholder="What are you looking for?" v-model="search" v-on:keyup.enter="getData">
-  <input class="submit" type="submit" value="enter" @click="getData">
+  <button class="submit" @click="getData">
+    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="485.213px" height="485.213px" viewBox="0 0 485.213 485.213" style="enable-background:new 0 0 485.213 485.213;"
+	 xml:space="preserve">
+<g>
+	<g>
+		<path d="M471.882,407.567L360.567,296.243c-16.586,25.795-38.536,47.734-64.331,64.321l111.324,111.324
+			c17.772,17.768,46.587,17.768,64.321,0C489.654,454.149,489.654,425.334,471.882,407.567z"/>
+		<path d="M363.909,181.955C363.909,81.473,282.44,0,181.956,0C81.474,0,0.001,81.473,0.001,181.955s81.473,181.951,181.955,181.951
+			C282.44,363.906,363.909,282.437,363.909,181.955z M181.956,318.416c-75.252,0-136.465-61.208-136.465-136.46
+			c0-75.252,61.213-136.465,136.465-136.465c75.25,0,136.468,61.213,136.468,136.465
+			C318.424,257.208,257.206,318.416,181.956,318.416z"/>
+		<path d="M75.817,181.955h30.322c0-41.803,34.014-75.814,75.816-75.814V75.816C123.438,75.816,75.817,123.437,75.817,181.955z"/>
+	</g>
+</g>
+</svg>
+  </button>
 </div>
 <a class="errorMessage" v-if="searchError">I had some problems with your search, try to write something else </a>
-<div class="tags anim"><span>Common tags: </span>
-  <a class="tag" @click="setTag('moon'); getData()">Moon</a>
-  <a class="tag" @click="setTag('earth'); getData()">Earth</a>
-  <a class="tag" @click="setTag('saturn'); getData()">Saturn</a>
-  <a class="tag" @click="setTag('mars'); getData()">Mars</a>
+<div class="tags anim"><span class="tag-title">Common tags: </span>
+  <div class="tag-wrapper">
+    <a class="tag" @click="setTag('moon'); getData()">Moon</a>
+    <a class="tag" @click="setTag('earth'); getData()">Earth</a>
+    <a class="tag" @click="setTag('saturn'); getData()">Saturn</a>
+    <a class="tag" @click="setTag('mars'); getData()">Mars</a>
+  </div>
 </div>
 <loader v-if="loading" /> 
   <grid/>
@@ -95,6 +113,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.nav{
+  padding: 28px 16px;
+}
+.footerFull{
+  position: absolute;
+  bottom: 0;
+}
+
 .particles{
   width: 100%;
   height: 100%;
@@ -102,114 +129,106 @@ export default {
   top: 0;
   z-index: -1;
 }
-.resultPage{
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.text{
+  padding: 0 12px;
+  color: #222442;
+  text-align: center;
 }
-.full{
-  height: 100vh !important;
-}
-.logoFull{
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-.footerFull{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
-.grid{
-  width: 99vw;
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 12px;
-  padding: 42px;
-}
-.image{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  cursor: pointer;
-  outline: none;
+.cont{
+  text-align: center;
 }
 .input{
-  // background: #222442;
-  border: 2px solid #222442;
+  height: 40px;
   border-radius: 20px;
-  width: 528px;
-  height: 44px;
-  font-size: 22px;
-  // color: rgb(223, 223, 223);
-  color: #222442;
+  border: 2px solid #222442;
+  width: 286px;
+  padding-left: 18px;
   outline: none;
-  padding: 0 16px;
-}
- .submit{
-    border: none;
-    background: rgb(45, 47, 95);
-    width: 102px;
-    height: 44px;
-    border-radius: 20px;
-    margin-left: -100px;
-    color: rgb(226, 226, 226);
-    cursor: pointer;
-    &:hover{
-    background: rgb(70, 73, 141);
-    }
+  margin: 8px 0 2px 0;
+  font-size: 14px;
+  &:focus{
+    box-shadow: 0 0 12px 2px #222442;
   }
-  .cont{
-    display: flex;
+}
+.submit{
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: none;
+  background: #222442;
+  margin-left: -40px;
+  svg{
+    width: 14px;
+    height: 14px;
+    fill: white;
+  }
+}
+.tags{
+  display: flex;
+  flex-direction: column;
+  .tag-title{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 8px;
+  }
+  .tag-wrapper{
     width: 100%;
+    height: 40px;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
   }
-  .tags{
-    margin: 14px;
+}
+.tag{
+  margin: 0 6px;
+  border: 2px solid #222442;
+  border-radius: 25px;
+  padding: 4px 8px;
+}
+.footer{
+  width: 100%;
+  height: 80px;
+  background: #222442;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+@media (min-width: 425px){
+  .input{
+    width: 380px;
   }
-  .tag{
-    padding: 6px 12px;
-    border-radius: 25px;
-    background: white;
-    border: 2px solid rgb(45,47,95);
-    margin: 6px;
-    cursor: pointer;
-    &:hover{
-      background: rgb(45, 47, 95);
-      color: white;
-    }
+  .nav{
+    padding: 28px 40px;
   }
   .text{
-    margin: 0 0 6px 0;
-    background: white;
+    padding: 0 22px;
   }
-  .errorMessage{
-    color: crimson;
-    margin: 12px 0;
-  }
-  .footer{
-    width: 100%;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    background:rgb(24, 25, 29);
-    h1, a{
+}
+@media (min-width: 1024px){
+  .tag{
+    cursor: pointer;
+    &:hover{
+      background: #222442;
       color: white;
     }
-    .blue{
-      color: #3C74A8;
+  }
+  .input{
+    width: 600px;
+    height: 50px;
+    border-radius: 30px;
+    font-size: 16px;
+  }
+  .submit{
+    border-radius: 30px;
+    height: 50px;
+    width: 50px;
+    margin-left: -50px;
+    svg{
+      width: 16px;
+      height: 16px;
     }
   }
-  .exploreBtn{
-    text-decoration: none;
-    color: rgb(45, 47, 95);
-    font-weight: bold;
-  }
+}
 </style>

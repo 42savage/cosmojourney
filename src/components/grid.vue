@@ -8,7 +8,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { TweenMax } from 'gsap';
+import { TweenMax, Power2 } from 'gsap';
 export default {
     name: 'grid',
     computed:{
@@ -54,12 +54,11 @@ export default {
 
 <style lang="scss" scoped>
 .grid{
-  width: 99vw;
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  grid-gap: 12px;
-  padding: 42px;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  margin: 20px;
+  grid-gap: 6px;
 }
 .image{
   width: 100%;
@@ -67,5 +66,10 @@ export default {
   object-fit: cover;
   cursor: pointer;
   outline: none;
+}
+@media (min-width: 768px){
+  .grid{
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
 }
 </style>

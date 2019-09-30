@@ -1,5 +1,5 @@
 <template>
-<div class="nav">
+<div v-bind:class="{abs: this.$router.history.current.name === 'home'}" class="nav">
     <router-link to="/" tag="div" class="logo">
         <h1 v-bind:class="{light: this.$router.history.current.name === 'home'}">Cosmo</h1>
         <h2>journey</h2>
@@ -15,49 +15,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.abs{
+  position: absolute;
+  top: 0;
+}
 .light{
   color: white !important;
 }
 .nav{
-    width: 100% !important;
-    display: flex !important;
-    justify-content: space-between !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    padding: 42px !important;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  padding: 28px
 }
 .logo{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  line-height: 18px;
   cursor: pointer;
-    h1{
-    letter-spacing: 6px;
-    font-size: 24px;
-    text-transform: uppercase;
-    color: rgb(45, 47, 95);
+  h1{
+    font-size: 22px;
+    font-weight: bold;
   }
   h2{
+    color: #397fc0;
     font-size: 18px;
-    margin: -5px 0;
-    color: #3C74A8;
   }
 }
 .explore{
-    text-decoration: none;
-    font-weight: bold;
-    color: rgb(45, 47, 95);
-    animation-duration: 1s;
-    animation-fill-mode: both;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
-    &:hover{
-      animation-name: bounce;
-    }
+  text-decoration: none;
+  font-weight: bold;
+  color: black
 }
-
-
 @keyframes bounce {
 	0%, 100%, 20%, 50%, 80% {
 		-webkit-transform: translateY(0);
@@ -74,5 +63,24 @@ export default {
 		-ms-transform:     translateY(-5px);
 		transform:         translateY(-5px)
 	}
+}
+
+@media (min-width: 768px){
+  .nav{
+    padding: 64px;
+  }
+  .logo{
+    line-height: 20px;
+    h1{
+      font-size: 26px;
+    }
+    h2{
+      font-size: 18px;
+    }
+  }
+  .explore{
+    font-size: 18px;
+    font-weight: normal;
+  }
 }
 </style>
