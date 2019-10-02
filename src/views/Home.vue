@@ -127,6 +127,7 @@ export default {
   border: none;
   background: #1D1F40;
   margin-left: -40px;
+    cursor: pointer;
   svg{
     fill: rgba(255, 255, 255, 0.616);
     width: 14px;

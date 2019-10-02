@@ -113,7 +113,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.resultPage{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 .nav{
   padding: 28px 16px;
 }
@@ -128,6 +132,7 @@ export default {
   position: absolute;
   top: 0;
   z-index: -1;
+  display: none;
 }
 .text{
   padding: 0 12px;
@@ -225,9 +230,10 @@ export default {
     height: 50px;
     width: 50px;
     margin-left: -50px;
+    cursor: pointer;
     svg{
-      width: 16px;
-      height: 16px;
+      width: 14px;
+      height: 14px;
     }
   }
 }
