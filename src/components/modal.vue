@@ -59,11 +59,11 @@ export default {
 }
 .openModal{
     width: 90%;
+    z-index: 10;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
     background: white;
     box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
     display: flex;
@@ -125,5 +125,33 @@ export default {
         .openModal{
             width: 50%;
         }
+}
+@media (min-width: 530px) and (orientation: landscape){
+    .image{
+        height: 180px;
+    }
+}
+@media (min-width: 768px){
+    .image{
+        height: 400px;
+    }
+}
+@media (min-width: 800px) and (orientation: landscape){
+    .image{
+        height: 300px;
+    }
+}
+@media (min-width: 1280px) and (orientation: landscape){
+    .image{
+        height: 500px;
+    }
+}
+@media (min-width: 1440px){
+    .image{
+        height: 600px;
+    }
+    .openModal{
+        width: 70%;
+    }
 }
 </style>

@@ -168,12 +168,26 @@ export default {
     margin: 160px 0 180px 0;
   }
 }
-@media (orientation: landscape){
+@media (orientation: landscape) and (min-width: 320px){
     .headingText{
-      margin: 46px;
+      margin: 26px;
+      font-size: 52px;
     }
     .auth-text{
       font-size: 12px;
     }
 }
+@media (orientation: landscape) and (min-width: 800px){
+    .headingText{
+      margin: 96px;
+      font-size: 82px;
+    }
+    .auth-text{
+      font-size: 12px;
+    }
+    .nav{
+      padding: 48px;
+    }
+}
+
 </style>
