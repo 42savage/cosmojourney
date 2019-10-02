@@ -103,7 +103,7 @@ export default {
 .first, .second{
     width: 100%;
 }
-@media (min-width: 600px) {
+@media (min-width: 600px){
     .image{
         height: 400px;
     }
@@ -113,7 +113,7 @@ export default {
         }
     }
 }
-@media (min-width: 1024px) {
+@media (min-width: 1024px){
         .image{
         height: 600px;
     }

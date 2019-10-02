@@ -168,4 +168,12 @@ export default {
     margin: 160px 0 180px 0;
   }
 }
+@media (orientation: landscape){
+    .headingText{
+      margin: 46px;
+    }
+    .auth-text{
+      font-size: 12px;
+    }
+}
 </style>
