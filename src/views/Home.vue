@@ -10,26 +10,23 @@
         <div class="inputBox">
           <input class="input" type="text" placeholder="Type something related to universe" v-model="search" v-on:keyup.enter="getData">
           <button class="submit" @click="getData">
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="485.213px" height="485.213px" viewBox="0 0 485.213 485.213" style="enable-background:new 0 0 485.213 485.213;"
-	 xml:space="preserve">
-<g>
-	<g>
-		<path d="M471.882,407.567L360.567,296.243c-16.586,25.795-38.536,47.734-64.331,64.321l111.324,111.324
-			c17.772,17.768,46.587,17.768,64.321,0C489.654,454.149,489.654,425.334,471.882,407.567z"/>
-		<path d="M363.909,181.955C363.909,81.473,282.44,0,181.956,0C81.474,0,0.001,81.473,0.001,181.955s81.473,181.951,181.955,181.951
-			C282.44,363.906,363.909,282.437,363.909,181.955z M181.956,318.416c-75.252,0-136.465-61.208-136.465-136.46
-			c0-75.252,61.213-136.465,136.465-136.465c75.25,0,136.468,61.213,136.468,136.465
-			C318.424,257.208,257.206,318.416,181.956,318.416z"/>
-		<path d="M75.817,181.955h30.322c0-41.803,34.014-75.814,75.816-75.814V75.816C123.438,75.816,75.817,123.437,75.817,181.955z"/>
-	</g>
-</g>
-</svg>
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	            width="485.213px" height="485.213px" viewBox="0 0 485.213 485.213" style="enable-background:new 0 0 485.213 485.213;"
+	            xml:space="preserve">
+              <g>
+	            <g>
+		            <path d="M471.882,407.567L360.567,296.243c-16.586,25.795-38.536,47.734-64.331,64.321l111.324,111.324
+			          c17.772,17.768,46.587,17.768,64.321,0C489.654,454.149,489.654,425.334,471.882,407.567z"/>
+		            <path d="M363.909,181.955C363.909,81.473,282.44,0,181.956,0C81.474,0,0.001,81.473,0.001,181.955s81.473,181.951,181.955,181.951
+			          C282.44,363.906,363.909,282.437,363.909,181.955z M181.956,318.416c-75.252,0-136.465-61.208-136.465-136.46
+			          c0-75.252,61.213-136.465,136.465-136.465c75.25,0,136.468,61.213,136.468,136.465
+			          C318.424,257.208,257.206,318.416,181.956,318.416z"/>
+		            <path d="M75.817,181.955h30.322c0-41.803,34.014-75.814,75.816-75.814V75.816C123.438,75.816,75.817,123.437,75.817,181.955z"/>
+	            </g>
+              </g>
+            </svg>
           </button>
         </div>
-      </div>
-      <div class="author">
-        <a class="auth-text">created by shizz0@outlook.com</a>
       </div>
     </div>
   </div>
@@ -103,6 +100,8 @@ export default {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: absolute;
+  bottom:  28px;
 }
 .input{
   width: 286px;
@@ -133,14 +132,6 @@ export default {
     width: 14px;
     height: 14px;
   }
-}
-
-.author{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  margin: 18px 0;
 }
 @media (min-width: 768px){
   .headingText{
